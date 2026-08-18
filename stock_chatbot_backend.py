@@ -15,7 +15,7 @@ import os
 
 
 load_dotenv()
-llm = ChatGroq(model='openai/gpt-oss-120b')i
+llm = ChatGroq(model='openai/gpt-oss-120b')
 ALPHAVANTAGE_API_KEY = os.getenv("ALPHAVANTAGE_API_KEY")
 
 search_tool = DuckDuckGoSearchRun(region="us-en")
