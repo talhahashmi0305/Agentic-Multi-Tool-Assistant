@@ -28,20 +28,8 @@ The graph is stateful, so the agent can:
 
 ## Architecture
 
-```mermaid
-graph TD
-    A[User Query via Streamlit] --> B[LangGraph Agent Node]
-    B -->|Needs a tool?| C{Router}
-    C -->|Yes| D[Tool Execution Node]
-    D -->|Stock Data| D1[Real-time Stock API]
-    D -->|Web Search| D2[Search API]
-    D -->|Math| D3[Calculator Tool]
-    D1 --> B
-    D2 --> B
-    D3 --> B
-    C -->|No, has final answer| E[Respond to User]
-    B --> E
-```
+<img width="1418" height="640" alt="image" src="https://github.com/user-attachments/assets/bacf14d2-e8e3-471f-8222-eb37c64c140f" />
+
 
 The agent node and tool node sit in a loop: the LLM decides on a tool call → the tool executes → the result feeds back into the LLM's context → the LLM decides if it needs another tool or is ready to answer. This is a classic **ReAct-style agent loop**, implemented as an explicit LangGraph state machine rather than a black-box chain.
 
