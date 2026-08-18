@@ -28,10 +28,15 @@ The graph is stateful, so the agent can:
 
 ## Architecture
 
-<img width="1418" height="640" alt="image" src="https://github.com/user-attachments/assets/bacf14d2-e8e3-471f-8222-eb37c64c140f" />
+```mermaid
+graph TD
+    START([START]) --> CHAT[chat_node]
+    CHAT -->|tools_condition: needs a tool| TOOLS[tools node]
+    TOOLS -->|result fed back| CHAT
+    CHAT -->|tools_condition: no tool needed| END([END])
+```
 
-
-The agent node and tool node sit in a loop: the LLM decides on a tool call → the tool executes → the result feeds back into the LLM's context → the LLM decides if it needs another tool or is ready to answer. This is a classic **ReAct-style agent loop**, implemented as an explicit LangGraph state machine rather than a black-box chain.
+The graph has exactly two nodes — `chat_node` (the LLM) and `tools` (a single node bound to all three tools) — connected in a loop via LangGraph's `tools_condition`: the LLM decides on a tool call → the `tools` node executes the right one → the result feeds back into the LLM's context → the LLM decides if it needs another tool or is ready to answer. This is a classic **ReAct-style agent loop**, implemented as an explicit LangGraph state machine rather than a black-box chain.
 
 ---
 
