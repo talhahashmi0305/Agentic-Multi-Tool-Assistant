@@ -78,7 +78,7 @@ The agent decides tool selection **autonomously**, based on the semantics of the
 
 ```bash
 git clone https://github.com/talhahashmi0305/Agentic-Multi-Tool-Assistant.git
-cd langgraph-tool-agent
+cd Agentic-Multi-Tool-Assistant
 pip install -r requirements.txt
 cp .env.example .env   # add your API keys
 streamlit run stock_chatbot_frontend.py
