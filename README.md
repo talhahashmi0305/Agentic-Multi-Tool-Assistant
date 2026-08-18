@@ -77,7 +77,7 @@ The agent decides tool selection **autonomously**, based on the semantics of the
 ## Running it locally
 
 ```bash
-git clone <your-repo-url>
+git clone (https://github.com/talhahashmi0305/Agentic-Multi-Tool-Assistant)
 cd langgraph-tool-agent
 pip install -r requirements.txt
 cp .env.example .env   # add your API keys
